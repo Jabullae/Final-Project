@@ -89,12 +89,12 @@ function handleModeChange(event) {
 
 jsAllremove.addEventListener("click", () => ctx.clearRect(0, 0, canvas.width, canvas.height));
 
-if (canvas) {
-    canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("mousedown", startPainting);
-    canvas.addEventListener("mouseup", stopPainting);
-    canvas.addEventListener("mouseleave", stopPainting);
-}
+// if (canvas) {
+//     canvas.addEventListener("mousemove", onMouseMove);
+//     canvas.addEventListener("mousedown", startPainting);
+//     canvas.addEventListener("mouseup", stopPainting);
+//     canvas.addEventListener("mouseleave", stopPainting);
+// }
 
 MODE_BUTTON.forEach(mode => mode.addEventListener("click", handleModeChange)
 );

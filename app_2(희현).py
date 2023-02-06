@@ -163,17 +163,22 @@ def predict():
 
     
     render_template('index.html')
+    
 
 
 @app.route('/find_diff',  methods=['POST','GET'])
 def wrong_img():
     # 랜덤으로 텍스트 보내기
-    count = 0
-    random_class =random.sample(['나비','지렁이','컴퓨터'], 3)
+
+    ClickCount = 0
+    
+    random_class = ['나비','지렁이','컴퓨터']
+    random.shuffle(random_class)
     for i in random_class :
         random_list = [i+'1', i+'2',i+'3',i+'X']
         random_list_2 = []
-        for  j in random.sample(random_list, 4):
+        random.shuffle(random_list)
+        for  j in random_list:
             random_list_2.append(j)
         img1 = random_list_2[0]
         img2 = random_list_2[1]
@@ -188,9 +193,18 @@ def wrong_img():
         if 'X' in image:
             point.append('정답')
         else: point.append('오답')
-        count += 1
         
-    return render_template('4th_test_2.html',img1 = img1, img2=img2, img3=img3, img4=img4, count = count)
+    ClickCount = ClickCount + 1    
+    print(ClickCount)
+        
+    if ClickCount == 3:
+        return render_template('5th_test.html')
+    else:
+        return render_template('4th_test.html',img1 = img1, img2=img2, img3=img3, img4=img4)
+    
+    
+
+
 
 
 ################### 5번째 게임 : 파이게임(기억력) ###################
